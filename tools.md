@@ -77,7 +77,7 @@ TCP/IPでの通信の状態を確認できるコマンド.
 `$ nc -lvp <ポート番号>` で指定したポートでサーバを待ち受け状態にできる.  
 `-l`オプションで待受け状態, `-v`オプションで冗長モード(表示内容が増える), `-p`オプションでポート番号を指定する.  
 `$ nc <IPアドレス> <ポート番号>` で指定したIPアドレスの指定したポート番号に接続できる.  
-[Netcat for Windows](https://joncraton.org/blog/46/netcat-for-windows/)もある
+[Netcat for Windows](https://joncraton.org/blog/46/netcat-for-windows/)もある.
 - [nmap](https://nmap.org/)  
 高機能なポートスキャナー.  
 `$ nmap <IPアドレス>` でポートスキャンできる.  
@@ -101,7 +101,7 @@ APをスキャンし各種情報を取得できるコマンド.
 LANに流れるデータをキャプチャできるアプリケーション.  
 様々なOSで動作し, GUIで操作できる.  
 `$ wireshark` で起動する.
-- tshark
+- tshark  
 WiresharkのCUI版アプリケーション.  
 パケットキャプチャは重い処理であり, GUIとなるとより重くなるため, tsharkが使用されることがある.  
 `$ tshark -i <インタフェース名> -c <パケット数>` で指定したインタフェースの指定した個数のパケットをキャプチャできる.  
@@ -113,7 +113,7 @@ WiresharkのCUI版アプリケーション.
 キャプチャファイルを読み込んで解析したり, リアルタイムにパケットを解析することができるアプリケーション.  
 画像やメールの解析が得意.  
 `apt install xplico` でインストールできる.
-- xxd
+- xxd  
 ファイルを16進数または2進数でダンプできるコマンド.  
 `$ xxd <ファイル名>` でダンプできる.
 
@@ -142,9 +142,11 @@ MITMfの`--js-url`オプションにBeEFに用意されているスクリプト�
 WEPキーぐらいなら割と簡単に特定できる.  
 `$ aireplay-ng` ではAPに対して偽の認証を行ったり, KoreK chopchop attack, ARP要求リプレイ攻撃といったWEPに対する攻撃を行える.  
 `$ packetforge-ng` では自作のパケットを作成し, 送信することができる.
+- [WiFi Pumpkin](https://github.com/P0cL4bs/WiFi-Pumpkin/issues?q=is%3Aissue+is%3Aclosed)  
+おとりAPを立ち上げられるアプリケーション.
 
 # 脆弱性検査
-- [Metasploit Framework](https://www.metasploit.com/)
+- [Metasploit Framework](https://www.metasploit.com/)  
 調査, 侵入, 攻撃, バックドアの設置, 接続など, サーバ侵入における一連の攻撃をサポートするアプリケーション.  
 `$ msfconsole` で起動できる.  
 また, `msfvenom -p <ペイロード名>` でペイロードの作成ができる.
@@ -188,8 +190,6 @@ crunchにはセットファイルとして`/usr/share/crunch/charset.lst`が用�
 すると1234567000000 ~ 1234567999999の辞書ファイルが生成される.
 - [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
 WPA2キーの辞書ファイル.
-- [WiFi Pumpkin](https://github.com/P0cL4bs/WiFi-Pumpkin/issues?q=is%3Aissue+is%3Aclosed)  
-おとりAPを立ち上げられるアプリケーション.
 
 # ログ改竄
 - shred  
