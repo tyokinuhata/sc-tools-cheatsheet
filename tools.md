@@ -2,7 +2,7 @@
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)  
 過去のバージョン, Extension Packもここにある.
 - [VMWare OVF Tool](https://my.vmware.com/web/vmware/details?productId=614&downloadGroup=OVFTOOL420)  
-VMX -> OVFへの変換に使用した.
+VMX形式からOVF形式への変換に使用した.
 
 # OS
 - [Kali Linux](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)  
@@ -93,12 +93,12 @@ MS Officeのマクロ機能でのExploitコードの実行を支援するスク�
 実行ファイルを様々なアンチウイルスに通し, いくつのアンチウイルスに引っかかるかを調査できるWebサービス.
 
 # パスワード解析
-- Hydra  
+- [Hydra](https://github.com/vanhauser-thc/thc-hydra)  
 オンラインパスワードクラッカー.  
 辞書攻撃の場合, `hydra -L <ユーザリスト> -P <パスワードリスト> <IPアドレス> <サービスプロトコル名>` で解析可能.  
 また`-t <数値>`オプションでターゲットに対する並列処理のタスク数を指定可能(デフォルトは16).  
 xHydraというHydraのGUI版も提供されている.
-- Patator  
+- [Patator](https://github.com/lanjelot/patator)  
 オンラインパスワードクラッカー.  
 辞書攻撃の場合, `patator <モジュール名> host=<IPアドレス> user=FILE0 password=FILE1 0=<ユーザリスト> 1=<パスワードリスト>` で解析可能.  
 Patatorでは認証毎にモジュールが用意されており, SSHの場合はモジュール名に`ssh_login`を指定する.
