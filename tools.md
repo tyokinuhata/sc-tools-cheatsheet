@@ -41,9 +41,9 @@ ISO形式.
 `$ grep <正規表現> <ファイル名>` で検索できる.
 
 # ネットワーク調査
-- [確認くん](https://www.ugtop.com/spill.shtml)
+- [確認くん](https://www.ugtop.com/spill.shtml)  
 IPアドレス, その他接続端末の情報表示.  
-- [WhatIsMyIPAddress](https://whatismyipaddress.com/)
+- [WhatIsMyIPAddress](https://whatismyipaddress.com/)  
 IPアドレス, その他接続端末の情報表示.  
 - netstat  
 TCP/IPでの通信の状態を確認できるコマンド.  
@@ -68,13 +68,12 @@ Windows/Mac/Linux用が用意されている.
 アンチウイルスをバイパスするExploitコードを生成するアプリケーション.  
 `$ apt install veil-evasion` でインストール.  
 `$ veil` で起動.  
-[GitHub](https://github.com/Veil-Framework)
 - [Shellter](https://www.shellterproject.com/)  
 `$ apt install shellter` でインストール.  
 `$ shellter` で起動.  
 実行形式のファイルにExploitコードを埋め込んだりできる.
 - [MacroShop](https://github.com/khr0x40sh/MacroShop)  
-MS Officeのマクロ機能でExploitコードの実行を支援するスクリプト郡.
+MS Officeのマクロ機能でのExploitコードの実行を支援するスクリプト郡.
 
 # マルウェア解析
 - [VirusTotal](https://www.virustotal.com/ja/)  
