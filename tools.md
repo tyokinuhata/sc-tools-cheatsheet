@@ -1,12 +1,12 @@
 # 仮想環境
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)  
-過去のバージョン, Extension Packもここにある
+過去のバージョン, Extension Packもここにある.
 - [VMWare OVF Tool](https://my.vmware.com/web/vmware/details?productId=614&downloadGroup=OVFTOOL420)  
-VMX -> OVFへの変換に使用
+VMX -> OVFへの変換に使用した.
 
 # OS
 - [Kali Linux](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)  
-仮想マシン用
+仮想マシン用のイメージファイル.
 
 # Torrent
 - [µtorrent](https://www.utorrent.com/intl/ja/downloads)
