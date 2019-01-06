@@ -21,7 +21,7 @@ Windows 10のEnterpriseエディションの試用版が配布されている.
 ISO形式.
 
 # 脆弱性体験ツール
-- [Metasploitable 2](https://sourceforge.net/projects/metasploitable/files/MetaSploitable2/)
+- [Metasploitable 2](https://sourceforge.net/projects/metasploitable/files/MetaSploitable2/)  
 あえて脆弱性が存在する状態で構成されたLinuxディストリビューション.  
 現在はMetasploitable 3も出ているのでそっちを触るのも良い.
 
@@ -46,12 +46,30 @@ ISO形式.
 `$ grep <正規表現> <ファイル名>` で検索できる.
 
 # ネットワーク調査
+- ifconfig  
+`$ ifconfig` で端末のインタフェース情報表示, `$ ifconfig <インタフェース名> <up/down>` でインタフェースをup/downできる.
+- iwconfig  
+`$ iwconfig` で無線LANアダプタの情報表示, `$ iwconfig <無線LANインタフェース名> mode <managed/monitor>` でモードの変更を行える.
+- route  
+ルーティングテーブルを確認できるコマンド.
+- arp  
+ARPテーブルを表示するコマンド.
+- ip  
+`ip addr`/`ip a`/`ip address`で端末のインタフェース情報を確認できる.  
+`ifconfig`の後継.  
+`ip route`/`ip r`で端末のルーティングテーブルを確認できる.  
+`route`の後継.  
+`ip neigh`/`ip n`/`ip neighbor`でARPテーブルを確認できる.  
+`arp`の後継.
 - [確認くん](https://www.ugtop.com/spill.shtml)  
 IPアドレス, その他接続端末の情報表示.  
 - [WhatIsMyIPAddress](https://whatismyipaddress.com/)  
 IPアドレス, その他接続端末の情報表示.  
+- iw  
+`$ iw <無線LANインタフェース名> link` で指定した無線LANインタフェースの接続状況を確認できる.
 - netstat  
 TCP/IPでの通信の状態を確認できるコマンド.  
+ちなみに`netstat`の後継コマンドには`ss`がある.
 `$ netstat -a` で状態が`LISTENING`であるコネクション一覧を表示可能.  
 また, `-n`オプションを付けることで名前解決せずに表示できる(そのため時間がかからない).
 - [Netcat](http://netcat.sourceforge.net/)  
@@ -64,6 +82,66 @@ TCP/IPでの通信の状態を確認できるコマンド.
 高機能なポートスキャナー.  
 `$ nmap <IPアドレス>` でポートスキャンできる.  
 `-sV`オプションで各ポートのサービスのバージョンまで検出, `-O`オプションでターゲットのOSの特定, `-p-`オプションでポート番号1番 ~ 65535番までを対象とする.
+- Wash
+WPS(WiFi Protected Setup)という簡単に端末を無線LANに接続できる仕組みの状態をスキャンするツール.  
+`$ wash -i <無線LANインタフェース名>` でスキャン可能.
+- iwlist  
+APをスキャンし各種情報を取得できるコマンド.  
+`$ iwlist <無線LANのインタフェース名> scan` でスキャンできる.
+- wifite
+周辺にあるAPをスキャンできるツール.  
+`$ wifite` で起動すると自動でスキャンがかかる.
+- [Wifi Analyzer](https://play.google.com/store/apps/details?id=com.farproc.wifi.analyzer)  
+無線LANの状況をグラフィカルに表示できるAndroidアプリ.
+- [Fing](https://play.google.com/store/apps/details?id=com.overlook.android.fing)  
+各種ネットワークユーティリティを備えたAndroidアプリ.
+
+# パケット解析
+- [Wireshark](https://www.wireshark.org/)  
+LANに流れるデータをキャプチャできるアプリケーション.  
+様々なOSで動作し, GUIで操作できる.  
+`$ wireshark` で起動する.
+- tshark
+WiresharkのCUI版アプリケーション.  
+パケットキャプチャは重い処理であり, GUIとなるとより重くなるため, tsharkが使用されることがある.  
+`$ tshark -i <インタフェース名> -c <パケット数>` で指定したインタフェースの指定した個数のパケットをキャプチャできる.  
+また, `-f`オプションでTCP or UDPやポート番号の指定(`-f "udp port 53"`のようにする)や, `-w`オプションでキャプチャファイルの読み込みができる.
+- [NetworkMiner](https://www.netresec.com/?page=networkminer)  
+キャプチャファイルを読み込むと自動的に中に含まれるファイルを識別してくれるため便利.  
+ただし, `pcapng`形式は読み込めない.
+- [Xplico](https://www.xplico.org/)  
+キャプチャファイルを読み込んで解析したり, リアルタイムにパケットを解析することができるアプリケーション.  
+画像やメールの解析が得意.  
+`apt install xplico` でインストールできる.
+- xxd
+ファイルを16進数または2進数でダンプできるコマンド.  
+`$ xxd <ファイル名>` でダンプできる.
+
+# ネットワーク攻撃
+- macchanger  
+無線LANアダプタのMACアドレスを偽装する.  
+`$ macchanger -s <インタフェース名>` で指定したインタフェースのMACアドレスを確認, `$ macchanger --mac=<MACアドレス> <インタフェース名>` で指定したインタフェースを指定したMACアドレスに偽装できる.
+- arpspoof  
+偽装したARPパケットを送信するコマンド.  
+`$ arpspoof -i <インタフェース名> -t <ターゲットのIPアドレス> <書き換えたいIPアドレス>` でターゲットのIPアドレスに対して偽装したARPパケットを送信し, ARPテーブルを汚染できる.
+- [MITMf](https://github.com/byt3bl33d3r/MITMf)  
+中間者攻撃(Man-in-the-middle attack)を支援するアプリケーション.  
+SSLstrip攻撃を利用し, ARPスプーフィングやDNSスプーフィングなど様々な攻撃を行える.  
+`$ apt install mitmf` でインストール.  
+ARPスプーフィングの場合, `$ mitmf -i <インタフェース名> --arp --spoof --gateway <ルーターのIPアドレス> --target <ターゲットのIPアドレス>` を実行すれば良い.
+- [BeEF](https://beefproject.com/)  
+ブラウザに焦点を当てたペネトレーションツール.  
+MITMfの`--js-url`オプションにBeEFに用意されているスクリプトを指定し, Webページにスクリプトを埋め込む, といった使い方ができる.
+- [Aircrack-ng](https://www.aircrack-ng.org/)  
+無線LANに対する各種攻撃を行えるツール.  
+`$ airmon-ng` コマンドでは認識している無線LANアダプタのドライバ名やチップセット名を表示できる.  
+また, インタフェースのup/downも行える.  
+`$ airodump-ng <無線LANインタフェース名>` では指定した無線LANインタフェースに対応するAPをスキャンする.  
+また, 簡単なパケットキャプチャなども行える.  
+`$ aircrack-ng <キャプチャファイル名>` でキャプチャファイルを読み込み, パスワード解析を行える.  
+WEPキーぐらいなら割と簡単に特定できる.  
+`$ aireplay-ng` ではAPに対して偽の認証を行ったり, KoreK chopchop attack, ARP要求リプレイ攻撃といったWEPに対する攻撃を行える.  
+`$ packetforge-ng` では自作のパケットを作成し, 送信することができる.
 
 # 脆弱性検査
 - [Metasploit Framework](https://www.metasploit.com/)
@@ -102,6 +180,16 @@ xHydraというHydraのGUI版も提供されている.
 オンラインパスワードクラッカー.  
 辞書攻撃の場合, `patator <モジュール名> host=<IPアドレス> user=FILE0 password=FILE1 0=<ユーザリスト> 1=<パスワードリスト>` で解析可能.  
 Patatorでは認証毎にモジュールが用意されており, SSHの場合はモジュール名に`ssh_login`を指定する.
+- crunch  
+辞書ファイルの生成を行える.  
+`$ crunch <最小桁数> <最大桁数> -t <対象とする文字列> <候補文字>` または `$ crunch <最小桁数> <最大桁数> -t <対象とする文字列> -f <セットファイル> <パターン>` のように指定する.  
+crunchにはセットファイルとして`/usr/share/crunch/charset.lst`が用意されている.  
+具体的な使用方法だが, 前半７桁が既知である１３桁のWEPキーの辞書ファイルを生成する場合, `$ crunch 13 13 -t 1234567%%%%%% 1234567890` または `$ crunch 13 13 -t 1234567%%%%%% -f /usr/share/crunch/charset.lst numeric` とする.  
+すると1234567000000 ~ 1234567999999の辞書ファイルが生成される.
+- [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
+WPA2キーの辞書ファイル.
+- [WiFi Pumpkin](https://github.com/P0cL4bs/WiFi-Pumpkin/issues?q=is%3Aissue+is%3Aclosed)  
+おとりAPを立ち上げられるアプリケーション.
 
 # ログ改竄
 - shred  
