@@ -24,6 +24,11 @@ ISO形式.
 - [Metasploitable 2](https://sourceforge.net/projects/metasploitable/files/MetaSploitable2/)  
 あえて脆弱性が存在する状態で構成されたLinuxディストリビューション.  
 現在はMetasploitable 3も出ているのでそっちを触るのも良い.
+- [DVWA](http://dvwa.co.uk/)  
+DVWA(Damn Vulnerable Web App)はあえて脆弱性が存在する状態で構成されたWebアプリケーション.  
+上述したMetasploitable 2にもDVWAが組み込まれているが, Metasploitable 2自体がそもそもメンテナンスされていないので別途入れることをオススメする.
+- [bWAPP bee-box](https://sourceforge.net/projects/bwapp/files/bee-box/)  
+Webセキュリティを学習するためのWebアプリケーション.
 
 # Torrent
 - [µtorrent](https://www.utorrent.com/intl/ja/downloads)
@@ -144,6 +149,8 @@ WEPキーぐらいなら割と簡単に特定できる.
 `$ packetforge-ng` では自作のパケットを作成し, 送信することができる.
 - [WiFi Pumpkin](https://github.com/P0cL4bs/WiFi-Pumpkin/issues?q=is%3Aissue+is%3Aclosed)  
 おとりAPを立ち上げられるアプリケーション.
+- [Burp](https://portswigger.net/burp/)  
+ローカルProxyの一種で, HTTPリクエストを確認したり, 様々な情報を補足することができる.
 
 # 脆弱性検査
 - [Metasploit Framework](https://www.metasploit.com/)  
@@ -167,6 +174,8 @@ MS Officeのマクロ機能でのExploitコードの実行を支援するスク�
 様々なアプリケーションの脆弱性情報の検索サービス.
 - [EXPLOIT DATABASE](https://www.exploit-db.com/)  
 様々なアプリケーションの脆弱性情報の検索サービス.
+- [Sqlmap](http://sqlmap.org/)  
+ブラインドSQLインジェクションの脆弱性を持つWebサイトのDBやテーブルの情報の洗い出し, パスワード解析などを行う.
 
 # マルウェア解析
 - [VirusTotal](https://www.virustotal.com/ja/)  
@@ -190,8 +199,19 @@ crunchにはセットファイルとして`/usr/share/crunch/charset.lst`が用�
 すると1234567000000 ~ 1234567999999の辞書ファイルが生成される.
 - [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
 WPA2キーの辞書ファイル.
+- [CrackStation](https://crackstation.net/)  
+ハッシュ値を解析するWebサービス.
+- [MD5 Online](https://www.md5online.org/)  
+MD5のハッシュ値を解析できるWebサービス.
+- [findmyhash](https://github.com/frdmn/findmyhash)  
+様々なハッシュ値の解析サービスを自動で巡回して解析を試みるツール.  
+例えばMD5のハッシュ値を解析したい場合, `$ findmyhash MD5 -h <ハッシュ値>` のように指定する.
 
 # ログ改竄
 - shred  
 rmコマンドではファイルの内容が完全に削除されないため, このコマンドを使用することがある.  
 `$ shred -n <書き込み回数> -zu <ログのパス>` で該当するログを`-n`オプションで指定した回数だけランダムに書き込み, `-z`オプションを付けた場合は最後に０を書き込む.
+
+# 匿名化
+- Tor
+`apt install tor` でインストールできる.
