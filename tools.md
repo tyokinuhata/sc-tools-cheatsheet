@@ -20,6 +20,11 @@ ISO形式で配布されている.
 Windows 10のEnterpriseエディションの試用版が配布されている.  
 ISO形式.
 
+# 脆弱性体験ツール
+- [Metasploitable 2](https://sourceforge.net/projects/metasploitable/files/MetaSploitable2/)
+あえて脆弱性が存在する状態で構成されたLinuxディストリビューション.  
+現在はMetasploitable 3も出ているのでそっちを触るのも良い.
+
 # Torrent
 - [µtorrent](https://www.utorrent.com/intl/ja/downloads)
 
@@ -51,10 +56,14 @@ TCP/IPでの通信の状態を確認できるコマンド.
 また, `-n`オプションを付けることで名前解決せずに表示できる(そのため時間がかからない).
 - [Netcat](http://netcat.sourceforge.net/)  
 ネットワークを介してデータを送受信できるコマンド.  
-Kali Linuxではデフォルトでインストールされている.  
 `$ nc -lvp <ポート番号>` で指定したポートでサーバを待ち受け状態にできる.  
+`-l`オプションで待受け状態, `-v`オプションで冗長モード(表示内容が増える), `-p`オプションでポート番号を指定する.  
 `$ nc <IPアドレス> <ポート番号>` で指定したIPアドレスの指定したポート番号に接続できる.  
 [Netcat for Windows](https://joncraton.org/blog/46/netcat-for-windows/)もある
+- [nmap](https://nmap.org/)  
+高機能なポートスキャナー.  
+`$ nmap <IPアドレス>` でポートスキャンできる.  
+`-sV`オプションで各ポートのサービスのバージョンまで検出, `-O`オプションでターゲットのOSの特定, `-p-`オプションでポート番号1番 ~ 65535番までを対象とする.
 
 # 脆弱性検査
 - [Metasploit Framework](https://www.metasploit.com/)
@@ -64,17 +73,37 @@ Kali Linuxではデフォルトでインストールされている.
 - [LaZagne](https://github.com/AlessandroZ/LaZagne)  
 ローカルPC内のパスワードを収集できるアプリケーション.  
 Windows/Mac/Linux用が用意されている.
-- [Veil Framework](https://www.veil-framework.com/)
+- [Veil Framework](https://www.veil-framework.com/)  
 アンチウイルスをバイパスするExploitコードを生成するアプリケーション.  
 `$ apt install veil-evasion` でインストール.  
 `$ veil` で起動.  
 - [Shellter](https://www.shellterproject.com/)  
+実行形式のファイルにExploitコードを埋め込んだりできる.  
 `$ apt install shellter` でインストール.  
-`$ shellter` で起動.  
-実行形式のファイルにExploitコードを埋め込んだりできる.
+`$ shellter` で起動.
 - [MacroShop](https://github.com/khr0x40sh/MacroShop)  
 MS Officeのマクロ機能でのExploitコードの実行を支援するスクリプト郡.
+- [CVE Details](https://www.cvedetails.com/)  
+様々なアプリケーションの脆弱性情報の検索サービス.
+- [EXPLOIT DATABASE](https://www.exploit-db.com/)  
+様々なアプリケーションの脆弱性情報の検索サービス.
 
 # マルウェア解析
 - [VirusTotal](https://www.virustotal.com/ja/)  
 実行ファイルを様々なアンチウイルスに通し, いくつのアンチウイルスに引っかかるかを調査できるWebサービス.
+
+# パスワード解析
+- Hydra  
+オンラインパスワードクラッカー.  
+辞書攻撃の場合, `hydra -L <ユーザリスト> -P <パスワードリスト> <IPアドレス> <サービスプロトコル名>` で解析可能.  
+また`-t <数値>`オプションでターゲットに対する並列処理のタスク数を指定可能(デフォルトは16).  
+xHydraというHydraのGUI版も提供されている.
+- Patator  
+オンラインパスワードクラッカー.  
+辞書攻撃の場合, `patator <モジュール名> host=<IPアドレス> user=FILE0 password=FILE1 0=<ユーザリスト> 1=<パスワードリスト>` で解析可能.  
+Patatorでは認証毎にモジュールが用意されており, SSHの場合はモジュール名に`ssh_login`を指定する.
+
+# ログ改竄
+- shred  
+rmコマンドではファイルの内容が完全に削除されないため, このコマンドを使用することがある.  
+`$ shred -n <書き込み回数> -zu <ログのパス>` で該当するログを`-n`オプションで指定した回数だけランダムに書き込み, `-z`オプションを付けた場合は最後に０を書き込む.
