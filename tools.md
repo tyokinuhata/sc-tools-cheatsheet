@@ -7,6 +7,8 @@ VMX形式からOVF形式への変換に使用した.
 # OS
 - [Kali Linux](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)  
 仮想マシン用のイメージファイル.
+- [Kali Pi](https://www.offensive-security.com/kali-linux-arm-images/)  
+Raspberry Pi用のKali Linux.
 - [Windows 7](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/)  
 仮想マシン用のイメージファイル.  
 あくまでIEの検証用ということに注意する.  
@@ -111,6 +113,8 @@ WiresharkのCUI版アプリケーション.
 パケットキャプチャは重い処理であり, GUIとなるとより重くなるため, tsharkが使用されることがある.  
 `$ tshark -i <インタフェース名> -c <パケット数>` で指定したインタフェースの指定した個数のパケットをキャプチャできる.  
 また, `-f`オプションでTCP or UDPやポート番号の指定(`-f "udp port 53"`のようにする)や, `-w`オプションでキャプチャファイルの読み込みができる.
+- tcpdump  
+パケットキャプチャができるコマンド.
 - [NetworkMiner](https://www.netresec.com/?page=networkminer)  
 キャプチャファイルを読み込むと自動的に中に含まれるファイルを識別してくれるため便利.  
 ただし, `pcapng`形式は読み込めない.
@@ -121,6 +125,9 @@ WiresharkのCUI版アプリケーション.
 - xxd  
 ファイルを16進数または2進数でダンプできるコマンド.  
 `$ xxd <ファイル名>` でダンプできる.
+- bridge-utils  
+Linux向けのブリッジユーティリティ.  
+これでLinuxをブリッジ化してルーターとターゲット端末の間に設置し, パケットのキャプチャを試みる.
 
 # ネットワーク攻撃
 - macchanger  
