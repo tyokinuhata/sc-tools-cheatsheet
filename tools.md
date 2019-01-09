@@ -53,6 +53,10 @@ Webセキュリティを学習するためのWebアプリケーション.
 `$ grep <正規表現> <ファイル名>` で検索できる.
 
 # ネットワーク調査
+- [確認くん](https://www.ugtop.com/spill.shtml)  
+IPアドレス, その他接続端末の情報表示.  
+- [WhatIsMyIPAddress](https://whatismyipaddress.com/)  
+IPアドレス, その他接続端末の情報表示.  
 - ifconfig  
 `$ ifconfig` で端末のインタフェース情報表示, `$ ifconfig <インタフェース名> <up/down>` でインタフェースをup/downできる.
 - route  
@@ -67,10 +71,6 @@ ARPテーブルを表示するコマンド.
 `route`の後継.  
 `ip neigh`/`ip n`/`ip neighbor`でARPテーブルを確認できる.  
 `arp`の後継.
-- [確認くん](https://www.ugtop.com/spill.shtml)  
-IPアドレス, その他接続端末の情報表示.  
-- [WhatIsMyIPAddress](https://whatismyipaddress.com/)  
-IPアドレス, その他接続端末の情報表示.  
 - ping  
 ネットワークの疎通を確認するコマンド.  
 `$ ping <IPアドレス/ホスト名>` のように使う.  
@@ -84,6 +84,9 @@ TCP/IPでの通信の状態を確認できるコマンド.
 ちなみに`netstat`の後継コマンドには`ss`がある.
 `$ netstat -a` で状態が`LISTENING`であるコネクション一覧を表示可能.  
 また, `-n`オプションを付けることで名前解決せずに表示できる(そのため時間がかからない).
+- nbtscan  
+NetBIOS名の一覧を表示するコマンド.  
+`$ nbtscan XXX.XXX.XXX.XXX-YYY` のように使用する.
 - [Netcat](http://netcat.sourceforge.net/)  
 ネットワークを介してデータを送受信できるコマンド.  
 `$ nc -lvp <ポート番号>` で指定したポートでサーバを待ち受け状態にできる.  
@@ -100,9 +103,6 @@ FWやルーターとしての機能を兼ね備えたパケットフィルタ.
 `$ iptables -t filter -A <INPUT/OUTPUT> -p <tcp/udp> --dport <ポート番号> -j DROP` でTCP/UDPの指定したポートの送信/受信パケットを破棄することができる.
 - tc  
 tcコマンドはトラフィックを操作するためのコマンド.  
-- nbtscan  
-NetBIOS名の一覧を表示するコマンド.  
-`$ nbtscan XXX.XXX.XXX.XXX-YYY` のように使用する.
 
 ## 無線LAN
 - iwconfig  
