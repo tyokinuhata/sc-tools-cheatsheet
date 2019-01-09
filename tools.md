@@ -55,8 +55,6 @@ Webセキュリティを学習するためのWebアプリケーション.
 # ネットワーク調査
 - ifconfig  
 `$ ifconfig` で端末のインタフェース情報表示, `$ ifconfig <インタフェース名> <up/down>` でインタフェースをup/downできる.
-- iwconfig  
-`$ iwconfig` で無線LANアダプタの情報表示, `$ iwconfig <無線LANインタフェース名> mode <managed/monitor>` でモードの変更を行える.
 - route  
 ルーティングテーブルを確認できるコマンド.
 - arp  
@@ -73,8 +71,14 @@ ARPテーブルを表示するコマンド.
 IPアドレス, その他接続端末の情報表示.  
 - [WhatIsMyIPAddress](https://whatismyipaddress.com/)  
 IPアドレス, その他接続端末の情報表示.  
-- iw  
-`$ iw <無線LANインタフェース名> link` で指定した無線LANインタフェースの接続状況を確認できる.
+- ping  
+ネットワークの疎通を確認するコマンド.  
+`$ ping <IPアドレス/ホスト名>` のように使う.  
+`$ ping -l 1472 -f <IPアドレス/ホスト名>` でMTU(1500byte - ICMPヘッダ8byte - IPヘッダ20バイト)でpingを送信する.
+- traceroute  
+ネットワークの経路を調査するコマンド.  
+`$ traceroute <IPアドレス/ホスト名>`  
+`-n`オプションで名前解決を抑止できる.
 - netstat  
 TCP/IPでの通信の状態を確認できるコマンド.  
 ちなみに`netstat`の後継コマンドには`ss`がある.
@@ -90,6 +94,21 @@ TCP/IPでの通信の状態を確認できるコマンド.
 高機能なポートスキャナー.  
 `$ nmap <IPアドレス>` でポートスキャンできる.  
 `-sV`オプションで各ポートのサービスのバージョンまで検出, `-O`オプションでターゲットのOSの特定, `-p-`オプションでポート番号1番 ~ 65535番までを対象とする.
+- iptables  
+FWやルーターとしての機能を兼ね備えたパケットフィルタ.  
+`$ iptables -nL` で全てのフィルタリングルールを表示.  
+`$ iptables -t filter -A <INPUT/OUTPUT> -p <tcp/udp> --dport <ポート番号> -j DROP` でTCP/UDPの指定したポートの送信/受信パケットを破棄することができる.
+- tc  
+tcコマンドはトラフィックを操作するためのコマンド.  
+- nbtscan  
+NetBIOS名の一覧を表示するコマンド.  
+`$ nbtscan XXX.XXX.XXX.XXX-YYY` のように使用する.
+
+## 無線LAN
+- iwconfig  
+`$ iwconfig` で無線LANアダプタの情報表示, `$ iwconfig <無線LANインタフェース名> mode <managed/monitor>` でモードの変更を行える.
+- iw  
+`$ iw <無線LANインタフェース名> link` で指定した無線LANインタフェースの接続状況を確認できる.
 - Wash  
 WPS(WiFi Protected Setup)という簡単に端末を無線LANに接続できる仕組みの状態をスキャンするツール.  
 `$ wash -i <無線LANインタフェース名>` でスキャン可能.
@@ -103,14 +122,8 @@ APをスキャンし各種情報を取得できるコマンド.
 無線LANの状況をグラフィカルに表示できるAndroidアプリ.
 - [Fing](https://play.google.com/store/apps/details?id=com.overlook.android.fing)  
 各種ネットワークユーティリティを備えたAndroidアプリ.
-- ping  
-ネットワークの疎通を確認するコマンド.  
-`$ ping <IPアドレス/ホスト名>` のように使う.  
-`$ ping -l 1472 -f <IPアドレス/ホスト名>` でMTU(1500byte - ICMPヘッダ8byte - IPヘッダ20バイト)でpingを送信する.
-- traceroute  
-ネットワークの経路を調査するコマンド.  
-`$ traceroute <IPアドレス/ホスト名>`  
-`-n`オプションで名前解決を抑止できる.
+
+## DNS
 - dig  
 ホスト名に対する情報を調べられるコマンド.  
 `dig @<DNSサーバのIPアドレス> <ホスト名> <レコード種別>` のように使う.
@@ -120,12 +133,8 @@ APをスキャンし各種情報を取得できるコマンド.
 - host  
 指定したホスト名のIPアドレスを調べられるコマンド.  
 `$ host <ホスト名>` のように使う.
-- iptables  
-FWやルーターとしての機能を兼ね備えたパケットフィルタ.  
-`$ iptables -nL` で全てのフィルタリングルールを表示.  
-`$ iptables -t filter -A <INPUT/OUTPUT> -p <tcp/udp> --dport <ポート番号> -j DROP` でTCP/UDPの指定したポートの送信/受信パケットを破棄することができる.
-- tc  
-tcコマンドはトラフィックを操作するためのコマンド.  
+
+## HTTP
 - curl  
 HTTPリクエストを送り, HTTPヘッダやHTTPボディを確認できるコマンド.  
 `$ curl <IPアドレス/ホスト名>` でHTTPボディのみ表示.  
@@ -134,13 +143,10 @@ HTTPリクエストを送り, HTTPヘッダやHTTPボディを確認できるコ
 `$ curl -v <IPアドレス/ホスト名>` でHTTPリクエストとHTTPレスポンス(ヘッダ/ボディ両方)を表示.
 `-X POST`オプションでPOSTリクエストを投げる.  
 `-d`オプションでパラメータを指定.
-- hping3  
-任意のTCP/IPパケットを投げられるコマンド.  
-`hping3 -S <送信先IPアドレス> -a <偽の送信元IPアドレス> --flood` でSYNリクエストのDoS攻撃が可能.  
-`-S`オプションはSYNリクエスト, `--flood`オプションは可能な限り速く送信する.
-- nbtscan  
-NetBIOS名の一覧を表示するコマンド.  
-`$ nbtscan XXX.XXX.XXX.XXX-YYY` のように使用する.
+- mitmproxy  
+HTTPプロキシを立てるコマンド.  
+`$ mitmproxy -p <ポート番号>` で指定したポート番号でHTTPプロキシを立てる.  
+HTTPS通信の中身を確認できる.
 
 # パケット解析
 - [Wireshark](https://www.wireshark.org/)  
@@ -197,6 +203,10 @@ WEPキーぐらいなら割と簡単に特定できる.
 おとりAPを立ち上げられるアプリケーション.
 - [Burp](https://portswigger.net/burp/)  
 ローカルProxyの一種で, HTTPリクエストを確認したり, 様々な情報を補足することができる.
+- hping3  
+任意のTCP/IPパケットを投げられるコマンド.  
+`hping3 -S <送信先IPアドレス> -a <偽の送信元IPアドレス> --flood` でSYNリクエストのDoS攻撃が可能.  
+`-S`オプションはSYNリクエスト, `--flood`オプションは可能な限り速く送信する.
 
 # 脆弱性検査
 - [Metasploit Framework](https://www.metasploit.com/)  
@@ -272,10 +282,6 @@ fileコマンドでファイルと特定できない場合や細工されてい�
 - icat  
 イメージファイルからファイルを抽出するコマンド.  
 `$ icat <イメージファイル名> <iノード>` で使用できる.
-- mitmproxy  
-HTTPプロキシを立てるコマンド.  
-`$ mitmproxy -p <ポート番号>` で指定したポート番号でHTTPプロキシを立てる.  
-HTTPS通信の中身を確認できる.
 
 # パスワード解析
 - [John the Ripper](https://www.openwall.com/john/)  
