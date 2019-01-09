@@ -60,7 +60,8 @@ Webセキュリティを学習するためのWebアプリケーション.
 - route  
 ルーティングテーブルを確認できるコマンド.
 - arp  
-ARPテーブルを表示するコマンド.
+ARPテーブルを表示するコマンド.  
+`$ arp` でARPテーブルを確認, `$ arp -d <IPアドレス>` で該当するARPキャッシュを削除.
 - ip  
 `ip addr`/`ip a`/`ip address`で端末のインタフェース情報を確認できる.  
 `ifconfig`の後継.  
@@ -104,10 +105,42 @@ APをスキャンし各種情報を取得できるコマンド.
 各種ネットワークユーティリティを備えたAndroidアプリ.
 - ping  
 ネットワークの疎通を確認するコマンド.  
-`$ ping <IPアドレス/ドメイン名>`
+`$ ping <IPアドレス/ホスト名>` のように使う.  
+`$ ping -l 1472 -f <IPアドレス/ホスト名>` でMTU(1500byte - ICMPヘッダ8byte - IPヘッダ20バイト)でpingを送信する.
 - traceroute  
 ネットワークの経路を調査するコマンド.  
-`$ traceroute <IPアドレス/ドメイン名>`
+`$ traceroute <IPアドレス/ホスト名>`  
+`-n`オプションで名前解決を抑止できる.
+- dig  
+ホスト名に対する情報を調べられるコマンド.  
+`dig @<DNSサーバのIPアドレス> <ホスト名> <レコード種別>` のように使う.
+- nslookup  
+指定したホスト名のIPアドレスを調べられるコマンド.  
+`$ nslookup <ホスト名>` のように使う.
+- host  
+指定したホスト名のIPアドレスを調べられるコマンド.  
+`$ host <ホスト名>` のように使う.
+- iptables  
+FWやルーターとしての機能を兼ね備えたパケットフィルタ.  
+`$ iptables -nL` で全てのフィルタリングルールを表示.  
+`$ iptables -t filter -A <INPUT/OUTPUT> -p <tcp/udp> --dport <ポート番号> -j DROP` でTCP/UDPの指定したポートの送信/受信パケットを破棄することができる.
+- tc  
+tcコマンドはトラフィックを操作するためのコマンド.  
+- curl  
+HTTPリクエストを送り, HTTPヘッダやHTTPボディを確認できるコマンド.  
+`$ curl <IPアドレス/ホスト名>` でHTTPボディのみ表示.  
+`$ curl -i <IPアドレス/ホスト名>` でHTTPヘッダとHTTPボディを表示.  
+`$ curl -I <IPアドレス/ホスト名>` でHTTPヘッダのみ表示.  
+`$ curl -v <IPアドレス/ホスト名>` でHTTPリクエストとHTTPレスポンス(ヘッダ/ボディ両方)を表示.
+`-X POST`オプションでPOSTリクエストを投げる.  
+`-d`オプションでパラメータを指定.
+- hping3  
+任意のTCP/IPパケットを投げられるコマンド.  
+`hping3 -S <送信先IPアドレス> -a <偽の送信元IPアドレス> --flood` でSYNリクエストのDoS攻撃が可能.  
+`-S`オプションはSYNリクエスト, `--flood`オプションは可能な限り速く送信する.
+- nbtscan  
+NetBIOS名の一覧を表示するコマンド.  
+`$ nbtscan XXX.XXX.XXX.XXX-YYY` のように使用する.
 
 # パケット解析
 - [Wireshark](https://www.wireshark.org/)  
@@ -193,6 +226,8 @@ MS Officeのマクロ機能でのExploitコードの実行を支援するスク�
 # マルウェア解析
 - [VirusTotal](https://www.virustotal.com/ja/)  
 実行ファイルを様々なアンチウイルスに通し, いくつのアンチウイルスに引っかかるかを調査できるWebサービス.
+- [Team Cymru SHA1/MD5 MHR Lookup](http://hash.cymru.com/)  
+SHA1またはMD5のハッシュ値を送信するとそれがマルウェアかどうか判別してくれるWebサービス.
 
 # バイナリ解析
 - file  
@@ -214,6 +249,33 @@ Windows版でもWineを使えばmacOSで動かせる.
 - Stirling  
 バイナリエディタ.  
 Windowsマシン上で動作する.
+- gdb  
+デバッガ.  
+`$ gdb <実行ファイル> <ダンプファイル>` でデバッガを開始できる.
+- [gdb-peda](https://github.com/longld/peda)  
+gdbの拡張版.
+- ldd
+バイナリファイルに含まれる共有ライブラリを列挙してくれるコマンド.  
+`$ ldd <バイナリファイル名>` のように使用する.
+- exiftool  
+画像ファイルやMS Officeのファイル, PDFファイルのメタデータを表示するコマンド.  
+`$ apt install exiftool` でインストールできる.  
+`$ exoftool <ファイル名>` でメタデータを表示する.
+- binwalk
+fileコマンドでファイルと特定できない場合や細工されているファイルを解析するコマンド.  
+`$ binwalk -Me <ファイル名>` のように使う.  
+`-M`オプションで圧縮ファイルがあれば再帰的に展開して探索, `-e`オプションでファイルを抽出.
+- fls  
+ファイルシステムを解析するコマンド.  
+`$ fls <イメージファイル名>` で解析できる.  
+出力される数字はiノードで`*`が表示されている箇所は削除されたファイル.
+- icat  
+イメージファイルからファイルを抽出するコマンド.  
+`$ icat <イメージファイル名> <iノード>` で使用できる.
+- mitmproxy  
+HTTPプロキシを立てるコマンド.  
+`$ mitmproxy -p <ポート番号>` で指定したポート番号でHTTPプロキシを立てる.  
+HTTPS通信の中身を確認できる.
 
 # パスワード解析
 - [John the Ripper](https://www.openwall.com/john/)  
@@ -244,6 +306,9 @@ MD5のハッシュ値を解析できるWebサービス.
 - [findmyhash](https://github.com/frdmn/findmyhash)  
 様々なハッシュ値の解析サービスを自動で巡回して解析を試みるツール.  
 例えばMD5のハッシュ値を解析したい場合, `$ findmyhash MD5 -h <ハッシュ値>` のように指定する.
+- base64
+Base64でエンコード/デコードできるコマンド.  
+`$ echo "<文字列>" | base64` でBase64エンコード, `$ echo "<文字列>" | base64 -d` でデコード.
 
 # ログ改竄
 - shred  
