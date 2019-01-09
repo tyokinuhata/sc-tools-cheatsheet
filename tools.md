@@ -89,13 +89,13 @@ TCP/IPでの通信の状態を確認できるコマンド.
 高機能なポートスキャナー.  
 `$ nmap <IPアドレス>` でポートスキャンできる.  
 `-sV`オプションで各ポートのサービスのバージョンまで検出, `-O`オプションでターゲットのOSの特定, `-p-`オプションでポート番号1番 ~ 65535番までを対象とする.
-- Wash
+- Wash  
 WPS(WiFi Protected Setup)という簡単に端末を無線LANに接続できる仕組みの状態をスキャンするツール.  
 `$ wash -i <無線LANインタフェース名>` でスキャン可能.
 - iwlist  
 APをスキャンし各種情報を取得できるコマンド.  
 `$ iwlist <無線LANのインタフェース名> scan` でスキャンできる.
-- wifite
+- wifite  
 周辺にあるAPをスキャンできるツール.  
 `$ wifite` で起動すると自動でスキャンがかかる.
 - [Wifi Analyzer](https://play.google.com/store/apps/details?id=com.farproc.wifi.analyzer)  
