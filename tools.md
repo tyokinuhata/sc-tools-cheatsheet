@@ -102,6 +102,12 @@ APをスキャンし各種情報を取得できるコマンド.
 無線LANの状況をグラフィカルに表示できるAndroidアプリ.
 - [Fing](https://play.google.com/store/apps/details?id=com.overlook.android.fing)  
 各種ネットワークユーティリティを備えたAndroidアプリ.
+- ping  
+ネットワークの疎通を確認するコマンド.  
+`$ ping <IPアドレス/ドメイン名>`
+- traceroute  
+ネットワークの経路を調査するコマンド.  
+`$ traceroute <IPアドレス/ドメイン名>`
 
 # パケット解析
 - [Wireshark](https://www.wireshark.org/)  
@@ -210,6 +216,10 @@ Windows版でもWineを使えばmacOSで動かせる.
 Windowsマシン上で動作する.
 
 # パスワード解析
+- [John the Ripper](https://www.openwall.com/john/)  
+オフラインパスワードクラッカー.
+`$ john --wordlist=/usr/share/john/password.lst --format:nt <ファイル名>` で解析.  
+`$ john <ファイル名> --show` で解析結果を表示.
 - [Hydra](https://github.com/vanhauser-thc/thc-hydra)  
 オンラインパスワードクラッカー.  
 辞書攻撃の場合, `hydra -L <ユーザリスト> -P <パスワードリスト> <IPアドレス> <サービスプロトコル名>` で解析可能.  
