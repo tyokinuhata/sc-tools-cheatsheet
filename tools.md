@@ -188,6 +188,27 @@ MS Officeのマクロ機能でのExploitコードの実行を支援するスク�
 - [VirusTotal](https://www.virustotal.com/ja/)  
 実行ファイルを様々なアンチウイルスに通し, いくつのアンチウイルスに引っかかるかを調査できるWebサービス.
 
+# バイナリ解析
+- file  
+ファイル内から特徴的なデータを検索することで, ファイルの種別を特定するコマンド.  
+`$ file <ファイル名>` のように使う.
+- strings  
+任意のファイルから可読な文字列を抽出するコマンド.  
+実行形式のファイルや画像ファイルに含まれる文字列を調査する際に有効.  
+`$ strings <ファイル名>` のようにして使う.  
+UTF-8の文字列を表示させたい場合は`-eS`オプションを付ける.
+- od  
+バイナリファイルをダンプできるコマンド.  
+`$ od -An -s <ファイル名>` のように使う.
+- [Binary Editor BZ](https://github.com/devil-tamachan/binaryeditorbz)  
+バイナリエディタ.  
+macOS版もあるがWindows版の方が高機能(多分).  
+Windows版でもWineを使えばmacOSで動かせる.  
+目grepができるのが強み.
+- Stirling  
+バイナリエディタ.  
+Windowsマシン上で動作する.
+
 # パスワード解析
 - [Hydra](https://github.com/vanhauser-thc/thc-hydra)  
 オンラインパスワードクラッカー.  
