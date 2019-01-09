@@ -284,6 +284,14 @@ Windows版でもWineを使えばmacOSで動かせる.
 Windowsマシン上で動作する.
 
 # パスワード解析
+- [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
+WPA2キーの辞書ファイル.
+- crunch  
+辞書ファイルの生成を行える.  
+`$ crunch <最小桁数> <最大桁数> -t <対象とする文字列> <候補文字>` または `$ crunch <最小桁数> <最大桁数> -t <対象とする文字列> -f <セットファイル> <パターン>` のように指定する.  
+crunchにはセットファイルとして`/usr/share/crunch/charset.lst`が用意されている.  
+具体的な使用方法だが, 前半７桁が既知である１３桁のWEPキーの辞書ファイルを生成する場合, `$ crunch 13 13 -t 1234567%%%%%% 1234567890` または `$ crunch 13 13 -t 1234567%%%%%% -f /usr/share/crunch/charset.lst numeric` とする.  
+すると1234567000000 ~ 1234567999999の辞書ファイルが生成される.
 - [John the Ripper](https://www.openwall.com/john/)  
 オフラインパスワードクラッカー.
 `$ john --wordlist=/usr/share/john/password.lst --format:nt <ファイル名>` で解析.  
@@ -297,14 +305,6 @@ xHydraというHydraのGUI版も提供されている.
 オンラインパスワードクラッカー.  
 辞書攻撃の場合, `patator <モジュール名> host=<IPアドレス> user=FILE0 password=FILE1 0=<ユーザリスト> 1=<パスワードリスト>` で解析可能.  
 Patatorでは認証毎にモジュールが用意されており, SSHの場合はモジュール名に`ssh_login`を指定する.
-- crunch  
-辞書ファイルの生成を行える.  
-`$ crunch <最小桁数> <最大桁数> -t <対象とする文字列> <候補文字>` または `$ crunch <最小桁数> <最大桁数> -t <対象とする文字列> -f <セットファイル> <パターン>` のように指定する.  
-crunchにはセットファイルとして`/usr/share/crunch/charset.lst`が用意されている.  
-具体的な使用方法だが, 前半７桁が既知である１３桁のWEPキーの辞書ファイルを生成する場合, `$ crunch 13 13 -t 1234567%%%%%% 1234567890` または `$ crunch 13 13 -t 1234567%%%%%% -f /usr/share/crunch/charset.lst numeric` とする.  
-すると1234567000000 ~ 1234567999999の辞書ファイルが生成される.
-- [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
-WPA2キーの辞書ファイル.
 - [CrackStation](https://crackstation.net/)  
 ハッシュ値を解析するWebサービス.
 - [MD5 Online](https://www.md5online.org/)  
