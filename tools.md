@@ -23,9 +23,9 @@ Windows 10のEnterpriseエディションの試用版が配布されている.
 ISO形式.
 
 # 脆弱性体験ツール
-- [Metasploitable 2](https://sourceforge.net/projects/metasploitable/files/MetaSploitable2/)  
+- [Metasploitable2](https://sourceforge.net/projects/metasploitable/files/MetaSploitable2/)  
 あえて脆弱性が存在する状態で構成されたLinuxディストリビューション.  
-現在はMetasploitable 3も出ているのでそっちを触るのも良い.
+現在はMetasploitable3も出ているのでそっちを触るのも良い.
 - [DVWA](http://dvwa.co.uk/)  
 DVWA(Damn Vulnerable Web App)はあえて脆弱性が存在する状態で構成されたWebアプリケーション.  
 上述したMetasploitable 2にもDVWAが組み込まれているが, Metasploitable 2自体がそもそもメンテナンスされていないので別途入れることをオススメする.
