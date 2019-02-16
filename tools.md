@@ -335,6 +335,7 @@ MD5のハッシュ値を解析できるWebサービス.
 - base64
 Base64でエンコード/デコードできるコマンド.  
 `$ echo "<文字列>" | base64` でBase64エンコード, `$ echo "<文字列>" | base64 -d` でデコード.
+// TODO: LinuxでのMD5, SHAでのハッシュ値生成, open ssh
 
 # ログ改竄
 - shred  
@@ -344,3 +345,7 @@ rmコマンドではファイルの内容が完全に削除されないため, �
 # 匿名化
 - Tor  
 `apt install tor` でインストールできる.
+
+# 暗号
+- [電子政府における調達のために参照すべき暗号のリスト（CRYPTREC暗号リスト）](https://www.cryptrec.go.jp/list/cryptrec-ls-0001-2012r4.pdf)
+- [SSL Cipher Suite Details of Your Browser](https://cc.dcsec.uni-hannover.de/)
