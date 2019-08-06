@@ -305,6 +305,10 @@ Windowsマシン上で動作する.
 - strace
 プロセスがどんなシステムコールを呼んでいるか確認するコマンド.  
 `strace -o foo.log ./foo` のようにして使用する.
+- sar
+プロセスがユーザモードとカーネルモードのどちらで実行しているかの割合を表示するコマンド.  
+`sar -P ALL 1` のようにして使用する.  
+ユーザモードは `%user` と `%nice`, カーネルモードは `%system`, アイドル状態は `%idle` から得られる.
 
 # パスワード解析
 - [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
