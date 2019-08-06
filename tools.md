@@ -302,6 +302,9 @@ Windows版でもWineを使えばmacOSで動かせる.
 - Stirling  
 バイナリエディタ.  
 Windowsマシン上で動作する.
+- strace
+プロセスがどんなシステムコールを呼んでいるか確認するコマンド.  
+`strace -o foo.log ./foo` のようにして使用する.
 
 # パスワード解析
 - [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
