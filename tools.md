@@ -310,6 +310,9 @@ Windowsマシン上で動作する.
 プロセスがユーザモードとカーネルモードのどちらで実行しているかの割合を表示するコマンド.  
 `sar -P ALL 1` のようにして使用する.  
 ユーザモードは `%user` と `%nice`, カーネルモードは `%system`, アイドル状態は `%idle` から得られる.
+- readelf
+Linuxの実行ファイルのELF(Executable Linkable Format)の各種情報を取得するコマンド.  
+`readelf /bin/sleep` のようにして使用する.
 
 # パスワード解析
 - [wpa2-wordlists](https://github.com/kennyn510/wpa2-wordlists)  
